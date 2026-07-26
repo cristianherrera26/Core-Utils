@@ -30,7 +30,7 @@
 .\"     from: @(#)du.1	6.13 (Berkeley) 6/20/91
 .\"	$NetBSD: uname.1,v 1.12 2005/03/27 18:41:22 peter Exp $
 .\"
-.Dd November 9, 1998
+.Dd July 25, 2026
 .Dt UNAME 1
 .Os
 .Sh NAME
@@ -38,7 +38,7 @@
 .Nd Print system information
 .Sh SYNOPSIS
 .Nm
-.Op Fl amMnoprsv
+.Op Fl aimMnoprsv
 .Sh DESCRIPTION
 The
 .Nm
@@ -51,6 +51,8 @@ The following options are available:
 Behave as though all of the options
 .Fl mnrsv
 were specified.
+.It Fl i
+print the hardware platform.
 .It Fl m
 print the machine hardware name using the uname syscall.
 .It Fl M
@@ -87,8 +89,9 @@ The
 utility conforms to
 .St -p1003.2-92 .
 The
-.Fl p,
-.Fl o
+.Fl i,
+.Fl M,
+.Fl o,
 and 
-.Fl M
+.Fl p
 options are extensions to the standard.
