@@ -38,7 +38,7 @@
 .Nd Print system information
 .Sh SYNOPSIS
 .Nm
-.Op Fl amnoprsv
+.Op Fl amMnoprsv
 .Sh DESCRIPTION
 The
 .Nm
@@ -52,7 +52,10 @@ Behave as though all of the options
 .Fl mnrsv
 were specified.
 .It Fl m
-print the machine hardware name.
+print the machine hardware name using the uname syscall.
+.It Fl M
+Print the machine hardware name using the MACHINE macro defined in
+/usr/include/machine/param.h (may differ from -m).
 .It Fl n
 print the nodename (the nodename may be a name
 that the system is known by to a communications
@@ -84,7 +87,8 @@ The
 utility conforms to
 .St -p1003.2-92 .
 The
-.Fl p
-and
+.Fl p,
 .Fl o
+and 
+.Fl M
 options are extensions to the standard.

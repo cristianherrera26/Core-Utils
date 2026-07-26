@@ -57,6 +57,7 @@ __dead static void usage(void);
 #define	PRINT_MACHINE		0x10
 #define	PRINT_MACHINE_ARCH	0x20
 #define PRINT_OSNAME		0x40
+#define PRINT_MACHINE_MACRO	0x80
 #define	PRINT_ALL		\
     (PRINT_SYSNAME|PRINT_NODENAME|PRINT_RELEASE|PRINT_VERSION|PRINT_MACHINE)
 
@@ -64,19 +65,21 @@ int
 main(int argc, char **argv)
 {
 	struct utsname u;
-	char machine_arch[SYS_NMLN];
 	int c;
 	int space = 0;
 	int print_mask = 0;
 
 	(void)setlocale(LC_ALL, "");
-	while ((c = getopt(argc,argv,"amnoprsv")) != -1) {
+	while ((c = getopt(argc,argv,"amMnoprsv")) != -1) {
 		switch (c) {
 		case 'a':
 			print_mask |= PRINT_ALL;
 			break;
 		case 'm':
 			print_mask |= PRINT_MACHINE;
+			break;
+		case 'M':
+			print_mask |= PRINT_MACHINE_MACRO;
 			break;
 		case 'n':
 			print_mask |= PRINT_NODENAME;
@@ -115,16 +118,6 @@ main(int argc, char **argv)
 		err(EXIT_FAILURE, "uname");
 		/* NOTREACHED */
 	}
-#if !defined(__atlantic__)
-	if (print_mask & PRINT_MACHINE_ARCH) {
-		int mib[2] = { CTL_HW, HW_MACHINE_ARCH };
-		size_t len = sizeof (machine_arch);
-
-		if (sysctl(mib, sizeof (mib) / sizeof (mib[0]), machine_arch,
-		    &len, NULL, 0) < 0)
-			err(EXIT_FAILURE, "sysctl");
-	}
-#endif
 	if (print_mask & PRINT_SYSNAME) {
 		space++;
 		fputs(u.sysname, stdout);
@@ -145,21 +138,17 @@ main(int argc, char **argv)
 		if (space++) putchar(' ');
 		fputs(u.machine, stdout);
 	}
+	if (print_mask & PRINT_MACHINE_MACRO) {
+		if (space++) putchar(' ');
+		fputs(MACHINE, stdout);
+	}
 	if (print_mask & PRINT_MACHINE_ARCH) {
 		if (space++) putchar(' ');
-#if !defined(__atlantic__)
-		fputs(machine_arch, stdout);
-#else
 		fputs(MACHINE_ARCH, stdout);
-#endif
 	}
 	if (print_mask & PRINT_OSNAME) {
 		if (space++) putchar(' ');
-#if !defined(__atlantic__)
-		fputs(u.sysname, stdout);
-#else
 		fputs("AtlanticOS", stdout);
-#endif
 	}
 	putchar('\n');
 
@@ -169,6 +158,6 @@ main(int argc, char **argv)
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: uname [-amnoprsv]\n");
+	fprintf(stderr, "usage: uname [-amMnoprsv]\n");
 	exit(EXIT_FAILURE);
 }
