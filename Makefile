@@ -1,4 +1,4 @@
 SUBDIR=	basename dirname domainname env echo hostname id link ln printenv \
-	unlink pwd sync uname
+	unlink pwd sync tee touch tty uname
 
 .include <bsd.subdir.mk>
