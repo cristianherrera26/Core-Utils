@@ -1,3 +1,3 @@
-SUBDIR=	env echo hostname printenv pwd uname
+SUBDIR=	domainname env echo hostname printenv pwd uname
 
 .include <bsd.subdir.mk>
