@@ -38,7 +38,7 @@
 .Nd Print system information
 .Sh SYNOPSIS
 .Nm
-.Op Fl aimMnoprsv
+.Op Fl aimnoprsv
 .Sh DESCRIPTION
 The
 .Nm
@@ -54,10 +54,7 @@ were specified.
 .It Fl i
 print the hardware platform.
 .It Fl m
-print the machine hardware name using the uname syscall.
-.It Fl M
-Print the machine hardware name using the MACHINE macro defined in
-/usr/include/machine/param.h (may differ from -m).
+print the machine hardware name.
 .It Fl n
 print the nodename (the nodename may be a name
 that the system is known by to a communications
@@ -90,8 +87,7 @@ utility conforms to
 .St -p1003.2-92 .
 The
 .Fl i,
-.Fl M,
-.Fl o,
+.Fl o
 and 
 .Fl p
 options are extensions to the standard.

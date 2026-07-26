@@ -54,10 +54,9 @@ __dead static void usage(void);
 #define	PRINT_RELEASE		0x04
 #define	PRINT_VERSION		0x08
 #define	PRINT_MACHINE		0x10
-#define PRINT_MACHINE_MACRO	0x20
-#define	PRINT_MACHINE_ARCH	0x40
+#define	PRINT_MACHINE_ARCH	0x20
+#define PRINT_PLATFORM		0x40
 #define PRINT_OSNAME		0x80
-#define PRINT_PLATFORM		0x100
 #define	PRINT_ALL		\
     (PRINT_SYSNAME|PRINT_NODENAME|PRINT_RELEASE|PRINT_VERSION|PRINT_MACHINE)
 
@@ -70,7 +69,8 @@ main(int argc, char **argv)
 	int print_mask = 0;
 
 	(void)setlocale(LC_ALL, "");
-	while ((c = getopt(argc,argv,"aimMnoprsv")) != -1) {
+
+	while ((c = getopt(argc,argv,"aimnoprsv")) != -1) {
 		switch (c) {
 		case 'a':
 			print_mask |= PRINT_ALL;
@@ -80,9 +80,6 @@ main(int argc, char **argv)
 			break;
 		case 'm':
 			print_mask |= PRINT_MACHINE;
-			break;
-		case 'M':
-			print_mask |= PRINT_MACHINE_MACRO;
 			break;
 		case 'n':
 			print_mask |= PRINT_NODENAME;
@@ -141,10 +138,6 @@ main(int argc, char **argv)
 		if (space++) putchar(' ');
 		fputs(u.machine, stdout);
 	}
-	if (print_mask & PRINT_MACHINE_MACRO) {
-		if (space++) putchar(' ');
-		fputs(MACHINE, stdout);
-	}
 	if (print_mask & PRINT_MACHINE_ARCH) {
 		if (space++) putchar(' ');
 		fputs(MACHINE_ARCH, stdout);
@@ -165,6 +158,6 @@ main(int argc, char **argv)
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: uname [-aimMnoprsv]\n");
+	fprintf(stderr, "usage: uname [-aimnoprsv]\n");
 	exit(EXIT_FAILURE);
 }

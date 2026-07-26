@@ -1,0 +1,65 @@
+--- uname.1	2026-07-25 13:02:38.911024417 -0500
++++ uname.1	2026-07-26 09:22:50.260372164 -0500
+@@ -30,15 +30,15 @@
+ .\"     from: @(#)du.1	6.13 (Berkeley) 6/20/91
+ .\"	$NetBSD: uname.1,v 1.12 2005/03/27 18:41:22 peter Exp $
+ .\"
+-.Dd November 9, 1998
++.Dd July 25, 2026
+ .Dt UNAME 1
+ .Os
+ .Sh NAME
+ .Nm uname
+-.Nd Print operating system name
++.Nd Print system information
+ .Sh SYNOPSIS
+ .Nm
+-.Op Fl amnprsv
++.Op Fl aimnoprsv
+ .Sh DESCRIPTION
+ The
+ .Nm
+@@ -51,25 +51,29 @@
+ Behave as though all of the options
+ .Fl mnrsv
+ were specified.
++.It Fl i
++print the hardware platform.
+ .It Fl m
+ print the machine hardware name.
+ .It Fl n
+ print the nodename (the nodename may be a name
+ that the system is known by to a communications
+ network).
++.It Fl o
++print the operating system name.
+ .It Fl p
+ print the machine processor architecture name.
+ .It Fl r
+-print the operating system release.
++print the kernel release.
+ .It Fl s
+-print the operating system name.
++print the kernel name.
+ .It Fl v
+-print the operating system version.
++print the kernel version.
+ .El
+ .Pp
+ If no options are specified,
+ .Nm
+-prints the operating system name as if the
++prints the kernel name as if the
+ .Fl s
+ option had been specified.
+ .Sh SEE ALSO
+@@ -82,5 +86,8 @@
+ utility conforms to
+ .St -p1003.2-92 .
+ The
++.Fl i,
++.Fl o
++and 
+ .Fl p
+-option is an extension to the standard.
++options are extensions to the standard.
