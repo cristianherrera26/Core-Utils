@@ -49,13 +49,14 @@ __RCSID("$NetBSD: uname.c,v 1.11 2011/09/06 18:35:13 joerg Exp $");
 
 __dead static void usage(void);
 
-/* Note that PRINT_MACHINE_ARCH is excluded from PRINT_ALL! */
+/* Note that PRINT_MACHINE_ARCH and PRINT_OSNAME are excluded from PRINT_ALL! */
 #define	PRINT_SYSNAME		0x01
 #define	PRINT_NODENAME		0x02
 #define	PRINT_RELEASE		0x04
 #define	PRINT_VERSION		0x08
 #define	PRINT_MACHINE		0x10
 #define	PRINT_MACHINE_ARCH	0x20
+#define PRINT_OSNAME		0x40
 #define	PRINT_ALL		\
     (PRINT_SYSNAME|PRINT_NODENAME|PRINT_RELEASE|PRINT_VERSION|PRINT_MACHINE)
 
@@ -69,8 +70,7 @@ main(int argc, char **argv)
 	int print_mask = 0;
 
 	(void)setlocale(LC_ALL, "");
-
-	while ((c = getopt(argc,argv,"amnprsv")) != -1) {
+	while ((c = getopt(argc,argv,"amnoprsv")) != -1) {
 		switch (c) {
 		case 'a':
 			print_mask |= PRINT_ALL;
@@ -80,6 +80,9 @@ main(int argc, char **argv)
 			break;
 		case 'n':
 			print_mask |= PRINT_NODENAME;
+			break;
+		case 'o':
+			print_mask |= PRINT_OSNAME;
 			break;
 		case 'p':
 			print_mask |= PRINT_MACHINE_ARCH;
@@ -144,21 +147,28 @@ main(int argc, char **argv)
 	}
 	if (print_mask & PRINT_MACHINE_ARCH) {
 		if (space++) putchar(' ');
-#if defined(__atlantic__)
-		fputs(MACHINE_ARCH, stdout);
-#else
+#if !defined(__atlantic__)
 		fputs(machine_arch, stdout);
+#else
+		fputs(MACHINE_ARCH, stdout);
+#endif
+	}
+	if (print_mask & PRINT_OSNAME) {
+		if (space++) putchar(' ');
+#if !defined(__atlantic__)
+		fputs(u.sysname, stdout);
+#else
+		fputs("AtlanticOS", stdout);
 #endif
 	}
 	putchar('\n');
 
-	exit(EXIT_SUCCESS);
-	/* NOTREACHED */
+	return 0;
 }
 
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: uname [-amnprsv]\n");
+	fprintf(stderr, "usage: uname [-amnoprsv]\n");
 	exit(EXIT_FAILURE);
 }
