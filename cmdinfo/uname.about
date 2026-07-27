@@ -1,0 +1,12 @@
+Name: uname
+Version: 1.2
+Description: Print system information
+Origin: NetBSD
+Since: AtlanticOS 26B
+Status: Stable
+Last Update: 2026-07-25
+Changes:
+- Remove sysctl dependency
+- Add -o option to print os name
+- Add -i option to print hardware platform
+- Update man page
