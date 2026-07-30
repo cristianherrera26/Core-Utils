@@ -1,0 +1,8 @@
+Name: unlink
+Version: 1.0
+Description: Remove a file with the unlink syscall
+Origin: NetBSD
+Since: AtlanticOS 26B
+Status: Stable
+Last Update: 2026-07-26
+Changes: None

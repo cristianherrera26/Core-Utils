@@ -1,0 +1,8 @@
+Name: id
+Version: 1.0
+Description: Return user identifier
+Origin: NetBSD
+Since: AtlanticOS 26B
+Status: Stable
+Last Update: 2026-07-26
+Changes: None
