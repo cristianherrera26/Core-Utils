@@ -36,6 +36,7 @@
 __RCSID("$NetBSD: uname.c,v 1.11 2011/09/06 18:35:13 joerg Exp $");
 #endif /* not lint */
 
+#include <sys/utsname.h>
 #include <sys/param.h>
 #include <limits.h>
 #include <locale.h>
@@ -43,9 +44,6 @@ __RCSID("$NetBSD: uname.c,v 1.11 2011/09/06 18:35:13 joerg Exp $");
 #include <stdlib.h>
 #include <unistd.h>
 #include <err.h>
-
-#include <sys/sysctl.h>
-#include <sys/utsname.h>
 
 __dead static void usage(void);
 

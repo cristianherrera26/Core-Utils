@@ -1,7 +1,20 @@
---- uname.c	2026-07-25 13:02:38.911024417 -0500
-+++ uname.c	2026-07-26 09:24:57.652742124 -0500
-@@ -49,13 +49,14 @@
+--- /home/cris/projects/NetBSD-src/usr.bin/uname/uname.c	2026-07-25 13:02:38.911024417 -0500
++++ uname.c	2026-07-31 13:43:46.580096732 -0500
+@@ -36,6 +36,7 @@
+ __RCSID("$NetBSD: uname.c,v 1.11 2011/09/06 18:35:13 joerg Exp $");
+ #endif /* not lint */
  
++#include <sys/utsname.h>
+ #include <sys/param.h>
+ #include <limits.h>
+ #include <locale.h>
+@@ -44,18 +45,16 @@
+ #include <unistd.h>
+ #include <err.h>
+ 
+-#include <sys/sysctl.h>
+-#include <sys/utsname.h>
+-
  __dead static void usage(void);
  
 -/* Note that PRINT_MACHINE_ARCH is excluded from PRINT_ALL! */
@@ -16,7 +29,7 @@
  #define	PRINT_ALL		\
      (PRINT_SYSNAME|PRINT_NODENAME|PRINT_RELEASE|PRINT_VERSION|PRINT_MACHINE)
  
-@@ -63,24 +64,29 @@
+@@ -63,24 +62,29 @@
  main(int argc, char **argv)
  {
  	struct utsname u;
@@ -48,7 +61,7 @@
  		case 'p':
  			print_mask |= PRINT_MACHINE_ARCH;
  			break;
-@@ -112,15 +118,6 @@
+@@ -112,15 +116,6 @@
  		err(EXIT_FAILURE, "uname");
  		/* NOTREACHED */
  	}
@@ -64,7 +77,7 @@
  	if (print_mask & PRINT_SYSNAME) {
  		space++;
  		fputs(u.sysname, stdout);
-@@ -143,17 +140,24 @@
+@@ -143,17 +138,24 @@
  	}
  	if (print_mask & PRINT_MACHINE_ARCH) {
  		if (space++) putchar(' ');
