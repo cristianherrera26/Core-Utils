@@ -134,7 +134,7 @@ main(int argc, char **argv)
 	}
 	if (print_mask & PRINT_MACHINE) {
 		if (space++) putchar(' ');
-		fputs(u.machine, stdout);
+		fputs(MACHINE, stdout);
 	}
 	if (print_mask & PRINT_MACHINE_ARCH) {
 		if (space++) putchar(' ');

@@ -1,5 +1,5 @@
 --- /home/cris/projects/NetBSD-src/usr.bin/uname/uname.c	2026-07-25 13:02:38.911024417 -0500
-+++ uname.c	2026-07-31 13:43:46.580096732 -0500
++++ uname.c	2026-07-31 13:45:52.067654555 -0500
 @@ -36,6 +36,7 @@
  __RCSID("$NetBSD: uname.c,v 1.11 2011/09/06 18:35:13 joerg Exp $");
  #endif /* not lint */
@@ -77,7 +77,12 @@
  	if (print_mask & PRINT_SYSNAME) {
  		space++;
  		fputs(u.sysname, stdout);
-@@ -143,17 +138,24 @@
+@@ -139,21 +134,28 @@
+ 	}
+ 	if (print_mask & PRINT_MACHINE) {
+ 		if (space++) putchar(' ');
+-		fputs(u.machine, stdout);
++		fputs(MACHINE, stdout);
  	}
  	if (print_mask & PRINT_MACHINE_ARCH) {
  		if (space++) putchar(' ');
