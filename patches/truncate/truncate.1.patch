@@ -1,0 +1,72 @@
+--- /home/cris/projects/FreeBSD-src/usr.bin/truncate/truncate.1	2026-08-01 16:31:45.102873249 -0500
++++ truncate.1	2026-08-01 16:29:11.533405779 -0500
+@@ -54,26 +54,6 @@
+ .Fl r Ar rfile
+ .Ek
+ .Ar
+-.Nm
+-.Op Fl c
+-.Bk -words
+-.Fl d
+-.Oo
+-.Fl o Xo
+-.Sm off
+-.Ar offset
+-.Op Cm SUFFIX
+-.Sm on
+-.Xc
+-.Oc
+-.Fl l Xo
+-.Sm off
+-.Ar length
+-.Op Cm SUFFIX
+-.Sm on
+-.Xc
+-.Ek
+-.Ar
+ .Sh DESCRIPTION
+ The
+ .Nm
+@@ -126,21 +106,6 @@
+ .Ar size
+ argument specifies an absolute length to which all files
+ should be extended or reduced as appropriate.
+-.It Fl d
+-Zero a region in the specified file.
+-If the underlying file system of the given file supports hole-punching,
+-file system space deallocation may be performed in the operation region.
+-.It Fl o Ar offset
+-The space management operation is performed at the given
+-.Ar offset
+-bytes in the file.
+-If this option is not specified,
+-the operation is performed at the beginning of the file.
+-.It Fl l Ar length
+-The length of the operation range in bytes.
+-This option must always be specified if option
+-.Fl d
+-is specified, and must be greater than 0.
+ .El
+ .Pp
+ The
+@@ -159,10 +124,9 @@
+ respectively.
+ .Pp
+ Exactly one of the
+-.Fl r ,
++.Fl r
++or
+ .Fl s
+-and
+-.Fl d
+ options must be specified.
+ .Pp
+ If a file is made smaller, its extra data is lost.
+@@ -238,7 +202,6 @@
+ .Sh SEE ALSO
+ .Xr dd 1 ,
+ .Xr touch 1 ,
+-.Xr fspacectl 2 ,
+ .Xr truncate 2
+ .Sh STANDARDS
+ The
