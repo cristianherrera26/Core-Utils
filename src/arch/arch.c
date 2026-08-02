@@ -43,6 +43,6 @@ main(int argc, char *argv[])
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: arch [-k] [archname]\n");
+	fprintf(stderr, "usage: %s [-k] [archname]\n", getprogname());
 	exit(1);
 }
