@@ -27,7 +27,7 @@ main(int argc, char *argv[])
 	if (print == NULL)
 		print = MACHINE;
 
-	if (argc != 0 && argc != 1)
+	if (argc > 1)
 		usage();
 
 	if (argc == 0) {
