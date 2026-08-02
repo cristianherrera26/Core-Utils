@@ -191,6 +191,6 @@ usage(void)
 {
 	fprintf(stderr, "%s\n%s\n",
 	    "usage: truncate [-c] -s [+|-|%|/]size[K|k|M|m|G|g|T|t] file ...",
-	    "       truncate [-c] -r rfile file ...",
+	    "       truncate [-c] -r rfile file ...");
 	exit(EXIT_FAILURE);
 }
