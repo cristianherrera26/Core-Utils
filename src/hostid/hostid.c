@@ -25,6 +25,6 @@ main(int argc, char *argv[])
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: hostid\n");
+	fprintf(stderr, "usage: %s\n", getprogname());
 	exit(1);
 }
