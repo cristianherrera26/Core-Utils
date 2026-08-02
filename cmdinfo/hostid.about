@@ -1,0 +1,8 @@
+Name: hostid
+Version: 1.0
+Description: Print the numeric indentifier of the current host
+Origin: AtlanticOS
+Since: AtlanticOS 26B
+Status: Stable
+Last Update: 2026-08-02
+Changes: None
