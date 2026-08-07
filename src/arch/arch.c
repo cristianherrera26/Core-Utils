@@ -10,7 +10,7 @@ int
 main(int argc, char *argv[])
 {
 	int c;
-	char *print = NULL;
+	const char *print = NULL;
 	while ((c = getopt(argc, argv, "km")) != -1) {
 		switch (c) {
 		case 'k':
