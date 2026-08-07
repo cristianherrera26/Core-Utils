@@ -1,8 +1,0 @@
-Name: dirname
-Version: 1.0
-Description: Print the directory portion of the given path(s)
-Origin: NetBSD
-Since: AtlanticOS 26B
-Status: Stable
-Last Update: 2026-07-26
-Changes: None

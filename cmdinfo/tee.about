@@ -1,8 +1,0 @@
-Name: tee
-Version: 1.0
-Description: Copy standard input to each FILE, and also to standard output.
-Origin: NetBSD
-Since: AtlanticOS 26B
-Status: Stable
-Last Update: 2026-07-26
-Changes: None

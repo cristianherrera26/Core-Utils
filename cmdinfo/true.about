@@ -1,8 +1,0 @@
-Name: true
-Version: 1.0
-Description: Return a successful exit code
-Origin: OpenBSD
-Since: AtlanticOS 26B
-Status: Stable
-Last Update: 2026-07-26
-Changes: None

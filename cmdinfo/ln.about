@@ -1,8 +1,0 @@
-Name: ln
-Version: 1.0
-Description: Create a symlinks and hardlinks
-Origin: NetBSD
-Since: AtlanticOS 26B
-Status: Stable
-Last Update: 2026-07-26
-Changes: None

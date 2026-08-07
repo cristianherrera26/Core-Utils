@@ -1,8 +1,0 @@
-Name: pwd
-Version: 1.0
-Description: Print the current working directory
-Origin: NetBSD
-Since: AtlanticOS 26B
-Status: Stable
-Last Update: 2026-07-25
-Changes: None
