@@ -11,10 +11,12 @@ main(int argc, char *argv[])
 {
 	int c;
 	char *print = NULL;
-	while ((c = getopt(argc, argv, "k")) != -1) {
+	while ((c = getopt(argc, argv, "km")) != -1) {
 		switch (c) {
 		case 'k':
 			print = MACHINE_ARCH;
+			break;
+		case 'm':	/* -m (machine): MACHINE is the default */
 			break;
 		default:
 			usage();
@@ -43,6 +45,6 @@ main(int argc, char *argv[])
 static void
 usage(void)
 {
-	fprintf(stderr, "usage: %s [-k] [archname]\n", getprogname());
+	fprintf(stderr, "usage: %s [-km] [archname]\n", getprogname());
 	exit(1);
 }
